@@ -120,6 +120,7 @@ public abstract class BuildApksCommand {
   private static final Flag<String> KEY_ALIAS_FLAG = Flag.string("ks-key-alias");
   private static final Flag<Password> KEYSTORE_PASSWORD = Flag.password("ks-pass");
   private static final Flag<Password> KEY_PASSWORD = Flag.password("key-pass");
+  private static final Flag<Path> KEYSTORE_PROPERTIES = Flag.path("ks-properties");
 
   private static final String APK_SET_ARCHIVE_EXTENSION = "apks";
 
@@ -674,6 +675,14 @@ public abstract class BuildApksCommand {
                         + "is the first line of a file, e.g. 'file:/tmp/myPassword.txt'). If this "
                         + "flag is not set, the keystore password will be tried. If that fails, "
                         + "the password will be requested on the prompt.")
+                .build())
+        .addFlag(
+            FlagDescription.builder()
+                .setFlagName(KEYSTORE_PROPERTIES.getName())
+                .setExampleValue("/path/to/keystore.properties")
+                .setOptional(true)
+                .setDescription(
+                    "TODO write description")
                 .build())
         .addFlag(
             FlagDescription.builder()
